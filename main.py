@@ -1,6 +1,11 @@
 from header import *
 from animacao import *
 
+
+
+# Initialize all the Pygame Modules
+pygame.init()
+
 #Criando a janela principal
 (width, height) = (500,500)
 janelaPrincipal = pygame.display.set_mode((width,height)) 
@@ -24,13 +29,13 @@ jogador1 = Jogador()
 while jogoRunning:
 	#ATUALIZA A JANELA
 	pygame.display.flip()
-
+	janelaPrincipal.fill(background_colour)
 	#Jogador Idle
-	jogador1.idleAnimation(janelaPrincipal,20,20)
+	jogador1.verificaTeclado(janelaPrincipal)
 
 	for evento in pygame.event.get():
 		if evento.type == pygame.QUIT:
 			jogoRunning = False
 		pass
-	clock.tick(8)
+	clock.tick(10)
 	pass
