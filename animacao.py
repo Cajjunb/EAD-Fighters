@@ -22,7 +22,12 @@ class Jogador(object):
 		#Qual animacao esta sendo feita
 		self.animacaoAtual = "idle"
 		self.estadoAtual = 0 
+		#Qual Offset para a animacao
+		self.socoMedioYOffset = 458
+		self.socoMedioXOffset = 168
 
+
+		#CODIGO DO REPOSITORIO ONLINE
 
 	def verificaTeclado(self,janelaPrincipal ):
 		if self.estadoAtual != 0:
@@ -40,6 +45,10 @@ class Jogador(object):
 					if event.key == pygame.K_o:
 						self.socoFraco(janelaPrincipal )
 						pass	
+					#Soco Medio
+					if event.key == pygame.K_p:
+						self.socoMedio(janelaPrincipal )
+						pass	
 				else:
 					self.idleAnimation(janelaPrincipal )
 					pass
@@ -52,6 +61,9 @@ class Jogador(object):
 			pass
 		elif self.animacaoAtual == "socoFraco":
 			self.socoFraco(janelaPrincipal )
+			pass
+		elif self.animacaoAtual == "socoMedio":
+			self.socoMedio(janelaPrincipal )
 			pass
 		pass
 
@@ -113,14 +125,14 @@ class Jogador(object):
 		pass
 		#Inclui imagem na memoria VGA
 		if self.estadoAtual == 0:
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(4+(self.estadoAtual*48),460,48,85))
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(4+(self.estadoAtual*48),self.socoMedioYOffset,48,85))
 			pass
 		elif self.estadoAtual == 1:
 #			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*50),135,65,80))
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(4+(self.estadoAtual*48),460,60,85))
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(4+(self.estadoAtual*48),self.socoMedioYOffset,60,85))
 		elif self.estadoAtual == 2:
 			#janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(50+65,135,50,80))
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(4+14+(self.estadoAtual*48),460,48,85))
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(4+14+(self.estadoAtual*48),self.socoMedioYOffset,48,85))
 			pass
 		#Vai para proximo sprite
 		self.estadoAtual += 1
@@ -138,13 +150,15 @@ class Jogador(object):
 			self.animacaoAtual = "socoMedio"
 		pass
 		#Inclui imagem na memoria VGA
-		if self.estadoAtual == 1:
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(155+(self.estadoAtual*50),135,65,80))
-		elif self.estadoAtual == 2:
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(155+65,135,50,80))
+		if self.estadoAtual == 0:
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(self.socoMedioXOffset+2+(self.estadoAtual*48),self.socoMedioYOffset,48,85))
 			pass
-		else:
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(155+(self.estadoAtual*50),135,50,80))
+		elif self.estadoAtual == 1:
+#			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*50),135,65,80))
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(self.socoMedioXOffset+2+(self.estadoAtual*48),self.socoMedioYOffset,70,85))
+		elif self.estadoAtual == 2:
+			#janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(50+65,135,50,80))
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(self.socoMedioXOffset+22+(self.estadoAtual*48),self.socoMedioYOffset,48,85))
 			pass
 		#Vai para proximo sprite
 		self.estadoAtual += 1
