@@ -41,14 +41,13 @@ janelaPrincipal.fill(background_colour)
 #loop principal final
 while jogoRunning:
 	#ATUALIZA A JANELA
-	pygame.display.flip()
 	janelaPrincipal.fill(background_colour)
 	#Jogador Idle
 	jogador1.verificaTeclado(janelaPrincipal)
-
 	for evento in pygame.event.get():
 		if evento.type == pygame.QUIT:
 			jogoRunning = False
 		pass
-	clock.tick(15)
+	clock.tick_busy_loop(10)
+	pygame.display.update()
 	pass
