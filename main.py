@@ -29,7 +29,7 @@ jogador1 = Jogador()
 #variavel de estado do jogo
 jogoRunning = True
 
-
+print "ops"
 menu = pygame.image.load('wallpaper\itlescreen3.png')
 janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
 pygame.display.flip()
@@ -44,21 +44,22 @@ while menuAberto == False:
 		pass
 	pass
 
-pygame.event.clear()
-
 #inicializa a posicao da flecha do menu em uma opcao inicial
+menu = pygame.image.load('wallpaper\itltescreenJogar.png')
+janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
+pygame.display.flip()
 escolhaMenu = 'jogar'
 while escolhaMenu != 'jogarApertado' and escolhaMenu != 'creditosApertado' :
 	evento = pygame.event.wait()	
 	if evento.type == pygame.KEYDOWN:
 		#Caso pressionar o a
-		if evento.key == pygame.K_a:
+		if evento.key == pygame.K_LEFT:
 			# Muda a imagem da seta esquerda
 			menu = pygame.image.load('wallpaper\itltescreenJogar.png')
 			escolhaMenu = 'jogar'
 			pass
 		#Caso pressionar o D
-		elif evento.key == pygame.K_d:
+		elif evento.key == pygame.K_RIGHT:
 			# Muda a imagem da seta Direita
 			menu = pygame.image.load('wallpaper\itltescreenCreditos.png')
 			escolhaMenu = 'creditos'
@@ -91,3 +92,8 @@ while jogoRunning:
 	clock.tick_busy_loop(10)
 	pygame.display.update()
 	pass
+
+
+
+
+
