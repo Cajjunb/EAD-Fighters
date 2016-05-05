@@ -1,5 +1,5 @@
 from header import *
-from ken import *
+from locke import *
 
 
 
@@ -7,7 +7,7 @@ from ken import *
 pygame.init()
 
 #Criando a janela principal
-(width, height) = (500,500)
+(width, height) = (500,350)
 janelaPrincipal = pygame.display.set_mode((width,height)) 
 pygame.display.flip()
 
@@ -20,23 +20,63 @@ pygame.display.set_caption('Lutadores EAD')
 #clock do jogo
 clock = pygame.time.Clock() # create a clock object for timing
 
+#mixer do pygame
+mixer = pygame.mixer.init()
+
 #Instancia
 jogador1 = Jogador()
 
-menu = pygame.image.load('sprites\How_to_start_a_business_crop.jpg')
-janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
+#variavel de estado do jogo
+jogoRunning = True
 
-jogoRunning = False
+
+menu = pygame.image.load('wallpaper\itlescreen3.png')
+janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
+pygame.display.flip()
+
+#variavel verifica se o menu foi aberto
+menuAberto = False
 #Verifica todos os eventos 
-while jogoRunning == False:
+while menuAberto == False:
 	evento = pygame.event.wait()	
 	if evento.type == pygame.KEYDOWN:
-		jogoRunning = True
+		menuAberto = True
 		pass
 	pass
 
-# Pinta o background
-janelaPrincipal.fill(background_colour)
+pygame.event.clear()
+
+#inicializa a posicao da flecha do menu em uma opcao inicial
+escolhaMenu = 'jogar'
+while escolhaMenu != 'jogarApertado' and escolhaMenu != 'creditosApertado' :
+	evento = pygame.event.wait()	
+	if evento.type == pygame.KEYDOWN:
+		#Caso pressionar o a
+		if evento.key == pygame.K_a:
+			# Muda a imagem da seta esquerda
+			menu = pygame.image.load('wallpaper\itltescreenJogar.png')
+			escolhaMenu = 'jogar'
+			pass
+		#Caso pressionar o D
+		elif evento.key == pygame.K_d:
+			# Muda a imagem da seta Direita
+			menu = pygame.image.load('wallpaper\itltescreenCreditos.png')
+			escolhaMenu = 'creditos'
+			pass
+		#Caso pressionar o enter
+		elif evento.key == pygame.K_RETURN:
+			if escolhaMenu == 'jogar':
+				escolhaMenu = 'jogarApertado'
+			elif escolhaMenu == 'creditos':
+				escolhaMenu = 'creditosApertado'
+				pass
+			pass
+		pass
+	janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
+	pygame.display.flip()
+	pass
+
+
 
 #loop principal final
 while jogoRunning:
