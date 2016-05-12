@@ -12,6 +12,16 @@ pygame.init()
 janelaPrincipal = pygame.display.set_mode((width,height)) 
 pygame.display.flip()
 
+
+
+#Instancia o objeto que faz o menu
+menuObjeto = menuJogo() 
+#Menu Principal e selecao
+menuObjeto.selecionaMenuPrincipal(janelaPrincipal)
+#Seleciona qual personagem tal personagem vai jogar
+menuObjeto.selecionaChar(janelaPrincipal)
+
+
 #Background set
 background_colour = (0,0,0)
 
@@ -27,12 +37,7 @@ jogador1 = Jogador()
 #variavel de estado do jogo
 jogoRunning = True
 
-#Instancia o objeto que faz o menu
-menuObjeto = menuJogo() 
-#Menu Principal e selecao
-menuObjeto.selecionaMenuPrincipal(janelaPrincipal)
-#Seleciona qual personagem tal personagem vai jogar
-menuObjeto.selecionaChar(janelaPrincipal)
+teste 	= pygame.image.load('sprites\paper.png')
 
 #loop principal final
 while jogoRunning:
@@ -45,6 +50,7 @@ while jogoRunning:
 			jogoRunning = False
 		pass
 	clock.tick_busy_loop(10)
+	janelaPrincipal.blit(teste,(100,100),(0,0,500,500))
 	pygame.display.update()
 	pass
 

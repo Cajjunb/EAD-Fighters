@@ -7,7 +7,7 @@ class Jogador(object):
 	def __init__(self):
 		super(Jogador, self).__init__()
 		#ARGUMENTOS
-		self.bibliotecaSprites = pygame.image.load('sprites\LockeAlt.png')
+		self.bibliotecaSprites = pygame.image.load('sprites\LockeAltGrande.png')
 		aux = self.bibliotecaSprites
 		self.bibliotecaSprites = aux.convert_alpha()
 		#Posicoes Do personagem
@@ -120,7 +120,7 @@ class Jogador(object):
 			self.finalizarAnimacao()
 		pass
 		#Inclui imagem na memoria VGA
-		janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtualIdle*18),0,18,28))
+		janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtualIdle*18*5),0,18*5,28*5))
 		#Vai para proximo sprite
 		self.estadoAtualIdle += 1
 		pass
@@ -138,7 +138,7 @@ class Jogador(object):
 				self.finalizarAnimacao()
 			pass
 			#Inclui imagem na memoria VGA
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*70),240,70,80))
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*70),240*5,70,80))
 			#Vai para proximo sprite
 			self.estadoAtual += 1
 			self.posicaox += direcao
@@ -224,7 +224,7 @@ class Jogador(object):
 				self.finalizarAnimacao()
 			pass
 			#Inclui imagem na memoria VGA
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*18),28,18,28))
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*18*5),28*5,18*5,28*5))
 			#Vai para proximo sprite
 			self.estadoAtual += 1
 			pass
