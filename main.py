@@ -21,39 +21,18 @@ pygame.display.set_caption('Lutadores EAD')
 #clock do jogo
 clock = pygame.time.Clock() # create a clock object for timing
 
-#mixer do pygame
-mixer = pygame.mixer.init()
-
 #Instancia
 jogador1 = Jogador()
 
 #variavel de estado do jogo
 jogoRunning = True
 
-menu = pygame.image.load('wallpaper\itlescreen3.png')
-janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
-pygame.display.flip()
-
-#variavel verifica se o menu foi aberto
-menuAberto = False
-#Verifica todos os eventos 
-while menuAberto == False:
-	evento = pygame.event.wait()	
-	if evento.type == pygame.KEYDOWN:
-		menuAberto = True
-		pass
-	pass
-
-
-
+#Instancia o objeto que faz o menu
 menuObjeto = menuJogo() 
 #Menu Principal e selecao
 menuObjeto.selecionaMenuPrincipal(janelaPrincipal)
 #Seleciona qual personagem tal personagem vai jogar
 menuObjeto.selecionaChar(janelaPrincipal)
-
-
-
 
 #loop principal final
 while jogoRunning:

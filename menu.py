@@ -1,12 +1,30 @@
 from header import *
+from somJogo import *
+
 
 class menuJogo(object):
 	"""docstring for menuJogo"""
 	def __init__(self):
+	 	pygame.mixer.init()
+	 	self.som = somJogo() 
 		super(menuJogo, self).__init__()
 	
 
 	def selecionaMenuPrincipal(self, janelaPrincipal):
+		menu = pygame.image.load('wallpaper\itlescreen3.png')
+		janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
+		pygame.display.flip()
+
+		#variavel verifica se o menu foi aberto
+		menuAberto = False
+		#Verifica todos os eventos 
+		while menuAberto == False:
+			evento = pygame.event.wait()	
+			if evento.type == pygame.KEYDOWN:
+				menuAberto = True
+				pass
+			pass
+
 		#inicializa a posicao da flecha do menu em uma opcao inicial
 		menu = pygame.image.load('wallpaper\itltescreenJogar.png')
 		janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
@@ -20,15 +38,21 @@ class menuJogo(object):
 					# Muda a imagem da seta esquerda
 					menu = pygame.image.load('wallpaper\itltescreenJogar.png')
 					escolhaMenu = 'jogar'
+					#Tocar beep
+					self.som.tocarBeep()
 					pass
 				#Caso pressionar o D
 				elif evento.key == pygame.K_RIGHT:
 					# Muda a imagem da seta Direita
 					menu = pygame.image.load('wallpaper\itltescreenCreditos.png')
+					#Tocar beep
+					self.som.tocarBeep()
 					escolhaMenu = 'creditos'
 					pass
 				#Caso pressionar o enter
 				elif evento.key == pygame.K_RETURN:
+					#Tocar beep
+					self.som.tocarAccept()
 					if escolhaMenu == 'jogar':
 						escolhaMenu = 'jogarApertado'
 					elif escolhaMenu == 'creditos':
@@ -49,9 +73,11 @@ class menuJogo(object):
 		charY = 0
 		charX = 0
 		#Selecao personagens imagem
-		menu = pygame.image.load('wallpaper\charselect.png')
-		seta = pygame.image.load('sprites\BackgroundMessagem2.png')
+		menu 	= pygame.image.load('wallpaper\charselect.png')
+		seta 	= pygame.image.load('sprites\BackgroundMessagem2.png')
+		painel 	= pygame.image.load('sprites\PainelGrande.png')
 		janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
+		janelaPrincipal.blit(painel,(70,10),(0,0,500,500))
 		janelaPrincipal.blit(seta,(90,210),(0,0,500,500))
 
 		pygame.display.flip()
@@ -59,30 +85,44 @@ class menuJogo(object):
 		#Verifica todos os eventos 
 		while selecionarPersonagem == False:
 			evento = pygame.event.wait()	
+			#Flags de som
+			valido_key = False
 			if evento.type == pygame.KEYDOWN:
 				#Verificando o teclado para selecionar personagens
 				if evento.key == pygame.K_RIGHT:
 					charX += 1
+					valido_key = True
 					pass
 				elif evento.key == pygame.K_LEFT:
 					charX -= 1
+					valido_key = True
 					pass
 				elif evento.key == pygame.K_DOWN:
 					charY -= 1
+					valido_key = True
 					pass
 				elif evento.key == pygame.K_UP:
 					charY += 1
+					valido_key = True
 					pass
 				elif evento.key == pygame.K_RETURN:
 					#Sai do personagem e faz a escolha
 					selecionarPersonagem = True
 					pass
 				pass
-
+				#Se eh um botao valido 
+				if valido_key == True:
+					#Toca um som
+					self.som.tocarBeep()
+					pass
+				elif selecionarPersonagem == True:
+					self.som.tocarAccept()
+					pass
 				charX = abs(charX % 3)
 				charY = abs(charY % 2)
 
 				janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
+				janelaPrincipal.blit(painel,(70,10),(0,0,500,500))	
 				janelaPrincipal.blit(seta,(90+(120*charX),210+(60*charY)),(0,0,500,500))
 				pygame.display.flip()
 			pass
