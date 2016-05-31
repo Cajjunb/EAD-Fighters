@@ -138,7 +138,7 @@ class Jogador(object):
 			self.finalizarAnimacao()
 		pass
 		#Inclui imagem na memoria VGA
-		janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*18),0,18,28))
+		janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtualIdle*18),0,18,28))
 		#Vai para proximo sprite
 		self.estadoAtualIdle += 1
 		pass
