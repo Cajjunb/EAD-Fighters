@@ -1,18 +1,19 @@
 from header import *
+from Controle import *
 
 class Jogador(object):
 
 	
 	"""docstring for Jogador"""
-	def __init__(self):
+	def __init__(self,posicaox,posicaoy,jogador=1):
 		super(Jogador, self).__init__()
 		#ARGUMENTOS
-		self.bibliotecaSprites = pygame.image.load('sprites\LockeAltGrande.png')
+		self.bibliotecaSprites = pygame.image.load('sprites\LockeAlt.png')
 		aux = self.bibliotecaSprites
 		self.bibliotecaSprites = aux.convert_alpha()
 		#Posicoes Do personagem
-		self.posicaox = 20
-		self.posicaoy = 20
+		self.posicaox = posicaox
+		self.posicaoy = posicaoy
 		#LIMITES ANIMACAO
 		self.limiteIdle = 3
 		self.limitemovimentarDireita = 2
@@ -27,54 +28,71 @@ class Jogador(object):
 		self.estadoAtualIdle = 0
 		#Apertar botoes
 		self.apertoBotoes = 0
+		self.coeficienteClick = 5
+
+		#Controle
+		self.controle = Controle(jogador=jogador)
 
 		#Argumentos
 		self.botaoApertado = False
 		self.coeficienteMovimentacao  = 5
 		#CODIGO DO REPOSITORIO ONLINE
 
+
+
 	def getBotoes(self):
 		return self.apertoBotoes
 
 
+	def atalizarBarraProgresso(self, janelaPrincipal,posx,posy):
+		barraProgresso 	= pygame.image.load('sprites\paper.png')
+		if self.apertoBotoes > 10 and self.apertoBotoes < 20:	
+			self.coeficienteClick = 4
+			pass
+		elif self.apertoBotoes > 20 and self.apertoBotoes < 30:			
+			self.coeficienteClick = 3
+			pass
+		elif self.apertoBotoes > 30 and self.apertoBotoes < 40 :			
+			self.coeficienteClick = 2
+			pass
+		elif self.apertoBotoes > 40 and self.apertoBotoes < 50 :			
+			self.coeficienteClick = 1
+			pass
+		elif self.apertoBotoes > 50 :			
+			self.coeficienteClick = 0
+			pass
+		janelaPrincipal.blit(barraProgresso,(posx,posy),(0,0+(40*self.coeficienteClick),100,40))
+		return 
+
 	def verificaTeclado(self,janelaPrincipal ):
 		if self.estadoAtual != 0 or self.estadoAtualIdle != 0:
-			#Acessa todos os eventos
-			eventos = pygame.event.get()
-			#Verifica todos os eventos 
-			for event in eventos:
-				#Testa qual tecla foi apertado 
-				if event.type == pygame.KEYDOWN:
-					self.botaoApertado = True
-					#Movimento esquerda
-					if event.key == pygame.K_a:
-						self.movimentarEsquerda(janelaPrincipal, - self.coeficienteMovimentacao )
-						pass
-					#Movimento Direita
-					elif event.key == pygame.K_d:
-						self.movimentarDireita(janelaPrincipal, self.coeficienteMovimentacao )
-						pass
-					#Agachar
-					elif event.key == pygame.K_s:
-						self.agachar(janelaPrincipal)
-						pass	
-					#Soco forte
-					elif event.key == pygame.K_o:
-						self.socoFraco(janelaPrincipal )
-						pass	
-					#Soco Medio
-					elif event.key == pygame.K_p:
-						self.chuteFraco(janelaPrincipal )
-						pass
-					#especial1
-					elif event.key == pygame.K_l:
-						self.especial1(janelaPrincipal )
-						self.apertoBotoes += 1
-						pass		
-				elif self.botaoApertado == False:
-					self.idleAnimation(janelaPrincipal)
-					pass
-			pass
+			#Acessa todas as teclas
+			teclas = pygame.key.get_pressed()
+			#Verifica todos os eventos  
+			#Movimento esquerda
+			if teclas[self.controle.left]:
+				self.movimentarEsquerda(janelaPrincipal, - self.coeficienteMovimentacao )
+				self.botaoApertado = True
+				pass
+			#Movimento Direita
+			elif teclas[self.controle.right]:
+				self.movimentarDireita(janelaPrincipal, self.coeficienteMovimentacao )
+				self.botaoApertado = True
+				pass
+			#Agachar
+			elif teclas[self.controle.down]:
+				self.agachar(janelaPrincipal)
+				self.botaoApertado = True
+				pass
+			#especial1
+			elif teclas[self.controle.special]:
+				self.especial1(janelaPrincipal )
+				self.botaoApertado = True
+				self.apertoBotoes += 1
+				pass		
+			elif self.botaoApertado == False:
+				self.idleAnimation(janelaPrincipal)
+				pass
 		if self.animacaoAtual == "movimentarEsquerda":	
 			self.movimentarEsquerda(janelaPrincipal, - self.coeficienteMovimentacao)
 			pass
@@ -120,7 +138,7 @@ class Jogador(object):
 			self.finalizarAnimacao()
 		pass
 		#Inclui imagem na memoria VGA
-		janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtualIdle*18*5),0,18*5,28*5))
+		janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*18),0,18,28))
 		#Vai para proximo sprite
 		self.estadoAtualIdle += 1
 		pass
@@ -224,7 +242,7 @@ class Jogador(object):
 				self.finalizarAnimacao()
 			pass
 			#Inclui imagem na memoria VGA
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*18*5),28*5,18*5,28*5))
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*18),28,18,28))
 			#Vai para proximo sprite
 			self.estadoAtual += 1
 			pass

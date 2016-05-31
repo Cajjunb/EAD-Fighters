@@ -1,6 +1,6 @@
 from header import *
-from locke import *
-from menu import *
+from MenuJogo import *
+from Artigotona import *
 
 
 
@@ -12,47 +12,23 @@ pygame.init()
 janelaPrincipal = pygame.display.set_mode((width,height)) 
 pygame.display.flip()
 
-
-
 #Instancia o objeto que faz o menu
-menuObjeto = menuJogo() 
+menuObjeto = MenuJogo() 
 #Menu Principal e selecao
 menuObjeto.selecionaMenuPrincipal(janelaPrincipal)
 #Seleciona qual personagem tal personagem vai jogar
 menuObjeto.selecionaChar(janelaPrincipal)
 
+#Instancia o objeto que faz o menu
+artigotonaObjeto = Artigotona() 
+#Roda o JOGO
+artigotonaObjeto.jogaArtigotona(janelaPrincipal)
 
 #Background set
 background_colour = (0,0,0)
 
 #configuracoes
 pygame.display.set_caption('Lutadores EAD')
-
-#clock do jogo
-clock = pygame.time.Clock() # create a clock object for timing
-
-#Instancia
-jogador1 = Jogador()
-
-#variavel de estado do jogo
-jogoRunning = True
-
-teste 	= pygame.image.load('sprites\paper.png')
-
-#loop principal final
-while jogoRunning:
-	#ATUALIZA A JANELA
-	janelaPrincipal.fill(background_colour)
-	#Jogador Idle
-	jogador1.verificaTeclado(janelaPrincipal)
-	for evento in pygame.event.get():
-		if evento.type == pygame.QUIT:
-			jogoRunning = False
-		pass
-	clock.tick_busy_loop(10)
-	janelaPrincipal.blit(teste,(100,100),(0,0,500,500))
-	pygame.display.update()
-	pass
 
 
 

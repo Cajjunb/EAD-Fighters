@@ -2,12 +2,12 @@ from header import *
 from somJogo import *
 
 
-class menuJogo(object):
+class MenuJogo(object):
 	"""docstring for menuJogo"""
 	def __init__(self):
 	 	pygame.mixer.init()
 	 	self.som = somJogo() 
-		super(menuJogo, self).__init__()
+		super(MenuJogo, self).__init__()
 	
 
 	def selecionaMenuPrincipal(self, janelaPrincipal):
