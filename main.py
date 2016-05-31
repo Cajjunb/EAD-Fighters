@@ -23,6 +23,7 @@ menuObjeto.selecionaChar(janelaPrincipal)
 artigotonaObjeto = Artigotona() 
 #Roda o JOGO
 artigotonaObjeto.jogaArtigotona(janelaPrincipal)
+artigotonaObjeto.anunciaVencedor(janelaPrincipal)
 
 #Background set
 background_colour = (0,0,0)

@@ -28,16 +28,27 @@ class Artigotona(object):
 		self.jogoRunning = True		
 		#loop principal final
 		while self.jogoRunning:
+			# Se acabou o jogo
+			if self.jogador1.chegouMaximoBarraProgresso() or self.jogador2.chegouMaximoBarraProgresso():
+				if self.jogador1.chegouMaximoBarraProgresso():
+					self.jogoRunning = False
+					self.vencedor = "jogador1"
+					pass
+				else:
+					self.jogoRunning = False
+					self.vencedor = "jogador2"
+					pass
+				pass
 			#ATUALIZA A JANELA
 			janelaPrincipal.blit(self.background,(0,0),(0,0,500,500))
 			#Jogador Idle
 			self.jogador1.verificaTeclado(janelaPrincipal)
 			#atualiza os papeis
-			self.jogador1.atalizarBarraProgresso(janelaPrincipal,0,100)
+			self.jogador1.atualizarBarraProgresso(janelaPrincipal,0,100)
 			#Jogador Idle
 			self.jogador2.verificaTeclado(janelaPrincipal)
 			#atualiza os papeis
-			self.jogador2.atalizarBarraProgresso(janelaPrincipal,400,100)
+			self.jogador2.atualizarBarraProgresso(janelaPrincipal,400,100)
 
 
 			for evento in pygame.event.get():
@@ -49,3 +60,20 @@ class Artigotona(object):
 			pass	
 		pass
 		
+
+	def anunciaVencedor(self,janelaPrincipal):
+		#Carrega imagens anunciando o vencedor
+		if self.vencedor == 'jogador1':
+			mensagem = pygame.image.load('.\wallpaper\Vencedor1.png')
+			pass
+		elif self.vencedor == 'jogador2':
+			mensagem = pygame.image.load('.\wallpaper\Vencedor2.png')
+			pass
+		else:
+			#caso seja
+			mensagem = pygame.image.load('.\wallpaper\Vencedor1.png')
+			pass
+		janelaPrincipal.blit(mensagem,(0,0),(0,0,500,500))
+		pygame.display.update()
+		pygame.time.wait(5000)
+		pass

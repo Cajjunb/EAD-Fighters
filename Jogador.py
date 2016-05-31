@@ -38,13 +38,14 @@ class Jogador(object):
 		self.coeficienteMovimentacao  = 5
 		#CODIGO DO REPOSITORIO ONLINE
 
+	def chegouMaximoBarraProgresso(self):
+		if self.apertoBotoes > 50:
+			return True
+		else:
+			return False
 
 
-	def getBotoes(self):
-		return self.apertoBotoes
-
-
-	def atalizarBarraProgresso(self, janelaPrincipal,posx,posy):
+	def atualizarBarraProgresso(self, janelaPrincipal,posx,posy):
 		barraProgresso 	= pygame.image.load('sprites\paper.png')
 		if self.apertoBotoes > 10 and self.apertoBotoes < 20:	
 			self.coeficienteClick = 4
