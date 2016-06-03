@@ -44,11 +44,11 @@ class Artigotona(object):
 			#Jogador Idle
 			self.jogador1.verificaTeclado(janelaPrincipal)
 			#atualiza os papeis
-			self.jogador1.atualizarBarraProgresso(janelaPrincipal,160,290)
+			self.jogador1.atualizarBarraProgresso(janelaPrincipal,0,290)
 			#Jogador Idle
 			self.jogador2.verificaTeclado(janelaPrincipal)
 			#atualiza os papeis
-			self.jogador2.atualizarBarraProgresso(janelaPrincipal,340,290)
+			self.jogador2.atualizarBarraProgresso(janelaPrincipal,400,290)
 
 
 			for evento in pygame.event.get():
