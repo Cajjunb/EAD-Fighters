@@ -8,12 +8,13 @@ class Jogador(object):
 	def __init__(self,posicaox,posicaoy,jogador=1):
 		super(Jogador, self).__init__()
 		#ARGUMENTOS
-		self.bibliotecaSprites = pygame.image.load('sprites\LockeAlt.png')
+		self.bibliotecaSprites = pygame.image.load('sprites\LucioTeles2.png')
 		aux = self.bibliotecaSprites
 		self.bibliotecaSprites = aux.convert_alpha()
 		#Posicoes Do personagem
 		self.posicaox = posicaox
 		self.posicaoy = posicaoy
+		self.tamanho = 32
 		#LIMITES ANIMACAO
 		self.limiteIdle = 3
 		self.limitemovimentarDireita = 2
@@ -139,7 +140,7 @@ class Jogador(object):
 			self.finalizarAnimacao()
 		pass
 		#Inclui imagem na memoria VGA
-		janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtualIdle*18),0,18,28))
+		janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtualIdle*self.tamanho),self.tamanho,self.tamanho,self.tamanho))
 		#Vai para proximo sprite
 		self.estadoAtualIdle += 1
 		pass
@@ -243,7 +244,7 @@ class Jogador(object):
 				self.finalizarAnimacao()
 			pass
 			#Inclui imagem na memoria VGA
-			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*18),28,18,28))
+			janelaPrincipal.blit(self.bibliotecaSprites,(self.posicaox,self.posicaoy),(0+(self.estadoAtual*self.tamanho),self.tamanho*2,self.tamanho,self.tamanho))
 			#Vai para proximo sprite
 			self.estadoAtual += 1
 			pass

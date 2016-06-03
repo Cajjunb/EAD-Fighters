@@ -7,9 +7,9 @@ class Artigotona(object):
 		#clock do jogo
 		self.clock = pygame.time.Clock() # create a clock object for timing
 		#Jogadores
-		self.jogador1 = Jogador(100,0,jogador=1)
+		self.jogador1 = Jogador(160,190,jogador=1)
 		#Jogadores
-		self.jogador2 = Jogador(300,0,jogador=2)
+		self.jogador2 = Jogador(340,190,jogador=2)
 		#variavel de estado do jogo
 		self.jogoRunning = False
 		#Background set
