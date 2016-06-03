@@ -8,13 +8,13 @@ class Jogador(object):
 	def __init__(self,posicaox,posicaoy,jogador=1):
 		super(Jogador, self).__init__()
 		#ARGUMENTOS
-		self.bibliotecaSprites = pygame.image.load('sprites\LucioTeles2.png')
+		self.bibliotecaSprites = pygame.image.load('sprites\LucioTeles3.png')
 		aux = self.bibliotecaSprites
 		self.bibliotecaSprites = aux.convert_alpha()
 		#Posicoes Do personagem
 		self.posicaox = posicaox
 		self.posicaoy = posicaoy
-		self.tamanho = 32
+		self.tamanho = 64
 		#LIMITES ANIMACAO
 		self.limiteIdle = 3
 		self.limitemovimentarDireita = 2
