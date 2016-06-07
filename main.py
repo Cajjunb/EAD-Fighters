@@ -17,10 +17,11 @@ menuObjeto = MenuJogo()
 #Menu Principal e selecao
 menuObjeto.selecionaMenuPrincipal(janelaPrincipal)
 #Seleciona qual personagem tal personagem vai jogar
-menuObjeto.selecionaChar(janelaPrincipal)
+char1 = menuObjeto.selecionaChar(janelaPrincipal)
+char2 = menuObjeto.selecionaChar(janelaPrincipal)
 
 #Instancia o objeto que faz o menu
-artigotonaObjeto = Artigotona() 
+artigotonaObjeto = Artigotona(char1,char2) 
 #Roda o JOGO
 artigotonaObjeto.jogaArtigotona(janelaPrincipal)
 artigotonaObjeto.anunciaVencedor(janelaPrincipal)

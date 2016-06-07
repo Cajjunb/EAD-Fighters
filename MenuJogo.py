@@ -127,5 +127,5 @@ class MenuJogo(object):
 				pygame.display.flip()
 			pass
 			#Retorno qual personagem foi escolhido
-		return (charX,charY)
+		return charX + charY*3
 		pass

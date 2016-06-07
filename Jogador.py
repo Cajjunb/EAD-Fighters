@@ -1,14 +1,23 @@
 from header import *
 from Controle import *
+from somJogo import *
 
 class Jogador(object):
 
 	
 	"""docstring for Jogador"""
-	def __init__(self,posicaox,posicaoy,jogador=1):
+	def __init__(self,posicaox,posicaoy,personagem=1,jogador=1):
 		super(Jogador, self).__init__()
-		#ARGUMENTOS
-		self.bibliotecaSprites = pygame.image.load('sprites\LucioTeles3.png')
+		#Seleciona qual personagem ele eh
+		if personagem == 0:
+			self.bibliotecaSprites = pygame.image.load('sprites\LucioTeles3.png')
+			pass
+		elif personagem == 1:
+			self.bibliotecaSprites = pygame.image.load('sprites\mariaRosa.png')
+			pass
+		else:
+			self.bibliotecaSprites = pygame.image.load('sprites\LockeAltGrande.png')
+			pass
 		aux = self.bibliotecaSprites
 		self.bibliotecaSprites = aux.convert_alpha()
 		#Posicoes Do personagem
@@ -30,7 +39,8 @@ class Jogador(object):
 		#Apertar botoes
 		self.apertoBotoes = 0
 		self.coeficienteClick = 5
-
+		#Somjogo
+		self.somJogo = somJogo()
 		#Controle
 		self.controle = Controle(jogador=jogador)
 
@@ -239,6 +249,7 @@ class Jogador(object):
 				pass
 			jogador1 = self.bibliotecaSprites
 			if self.estadoAtual >= self.limiteespecial1:
+				self.somJogo.tocarPaperWriting()
 				self.estadoAtual = 0
 				self.animacaoAtual = "especial1"
 				self.finalizarAnimacao()
