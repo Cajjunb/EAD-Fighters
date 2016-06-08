@@ -9,7 +9,7 @@ class somJogo(object):
 		self.paperWrite1 = pygame.mixer.Sound('sounds\paperWriting1.ogg')
 		self.paperWrite2 = pygame.mixer.Sound('sounds\paperWriting2.ogg')
 		self.paperWrite3 = pygame.mixer.Sound('sounds\paperWriting3.ogg')
-
+		self.buzz = pygame.mixer.Sound('sounds\Buzz.ogg')
 	def tocarBeep(self):
 		self.beep.play()
 		pass
@@ -29,4 +29,8 @@ class somJogo(object):
 		else:
 			self.paperWrite3.play()
 			pass
+		pass
+
+	def tocarBuzz(self):
+		self.buzz.play()
 		pass

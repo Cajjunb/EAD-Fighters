@@ -13,7 +13,7 @@ class Jogador(object):
 			self.bibliotecaSprites = pygame.image.load('sprites\LucioTeles3.png')
 			pass
 		elif personagem == 1:
-			self.bibliotecaSprites = pygame.image.load('sprites\mariaRosa.png')
+			self.bibliotecaSprites = pygame.image.load('sprites\mariaRosaGrande.png')
 			pass
 		else:
 			self.bibliotecaSprites = pygame.image.load('sprites\LockeAltGrande.png')
