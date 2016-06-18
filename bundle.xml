@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle>
+    <BootstrapperApplicationRef  Id="WixStandardBootstrapperApplication.RtfLicense" SourceFile="path\to\ba.dll"/>
+          <Payload SourceFile="path\to\en-us\resources.dll" />
+          <PayloadGroupRef Id="ResourceGroupforJapanese" />
+    <Chain>
+    </Chain>
+  </Bundle>
+</Wix>

@@ -65,7 +65,7 @@ class MenuJogo(object):
 			pass
 		pass
 
-	def selecionaChar(self,janelaPrincipal):
+	def selecionaChar(self,janelaPrincipal,jogador=1):
 		#variavel verifica se o menu de selecao de personagem foi aberto
 		selecionarPersonagem 	= False
 		#Variavel que indica qual personagem ele funciona
@@ -73,7 +73,12 @@ class MenuJogo(object):
 		charY = 0
 		charX = 0
 		#Selecao personagens imagem
-		menu 	= pygame.image.load('wallpaper\charselect.png')
+		if jogador == 1:
+			menu 	= pygame.image.load('wallpaper\charselect1.png')
+			pass
+		else:
+			menu 	= pygame.image.load('wallpaper\charselect2.png')
+			pass
 		seta 	= pygame.image.load('sprites\BackgroundMessagem2.png')
 		painel 	= pygame.image.load('sprites\PainelGrande.png')
 		janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
