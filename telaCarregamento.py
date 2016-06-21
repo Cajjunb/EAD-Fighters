@@ -19,3 +19,20 @@ class telaCarregamento(object):
 		pygame.display.update()
 		pygame.time.wait(5000)
 		pass
+
+
+
+	def mostraIntro(self,janelaPrincipal):
+		intro = pygame.image.load('loadingScreens\intro.png')
+		janelaPrincipal.blit(intro,(0,0),(0,0,500,500))
+		pygame.display.update()
+		pygame.time.wait(5000)
+		pass
+
+
+	def mostraIntro2(self,janelaPrincipal):
+		intro = pygame.image.load('loadingScreens\intro2.png')
+		janelaPrincipal.blit(intro,(0,0),(0,0,500,500))
+		pygame.display.update()
+		pygame.time.wait(5000)
+		pass

@@ -81,8 +81,12 @@ class MenuJogo(object):
 			pass
 		seta 	= pygame.image.load('sprites\BackgroundMessagem2.png')
 		painel 	= pygame.image.load('sprites\PainelGrande.png')
+
+		messagebox = pygame.image.load( 'messageBox\\'+ str(charX + (3*charY)) + '.png')
+
 		janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
 		janelaPrincipal.blit(painel,(70,10),(0,0,500,500))
+		janelaPrincipal.blit(messagebox,(70,10),(0,0,500,500))	
 		janelaPrincipal.blit(seta,(90,210),(0,0,500,500))
 
 		pygame.display.flip()
@@ -103,11 +107,11 @@ class MenuJogo(object):
 					valido_key = True
 					pass
 				elif evento.key == pygame.K_DOWN:
-					charY -= 1
+					charY -= 0
 					valido_key = True
 					pass
 				elif evento.key == pygame.K_UP:
-					charY += 1
+					charY += 0
 					valido_key = True
 					pass
 				elif evento.key == pygame.K_RETURN:
@@ -123,11 +127,14 @@ class MenuJogo(object):
 				elif selecionarPersonagem == True:
 					self.som.tocarAccept()
 					pass
-				charX = abs(charX % 3)
-				charY = abs(charY % 2)
+				charX = abs(charX % 2)
+				charY = abs(charY % 1)
+
+				messagebox = pygame.image.load( 'messageBox\\'+ str(charX + (3*charY)) + '.png')
 
 				janelaPrincipal.blit(menu,(0,0),(0,0,500,500))
 				janelaPrincipal.blit(painel,(70,10),(0,0,500,500))	
+				janelaPrincipal.blit(messagebox,(70,10),(0,0,500,500))	
 				janelaPrincipal.blit(seta,(90+(120*charX),210+(60*charY)),(0,0,500,500))
 				pygame.display.flip()
 			pass

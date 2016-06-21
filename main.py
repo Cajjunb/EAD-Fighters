@@ -28,6 +28,11 @@ telaObjeto = telaCarregamento()
 telaObjeto.setupTelaCarregamento(1)
 telaObjeto.mostraTelaCarregamento(janelaPrincipal)
 
+
+telaObjeto.mostraIntro(janelaPrincipal)
+telaObjeto.mostraIntro2(janelaPrincipal)
+
+
 #Instancia o objeto que faz o menu
 artigotonaObjeto = Artigotona(char1,char2) 
 #Roda o JOGO

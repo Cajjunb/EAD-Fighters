@@ -24,6 +24,8 @@ class Artigotona(object):
 
 	def jogaArtigotona(self,janelaPrincipal):
 
+		pygame.time.wait(5000)
+
 		#variavel de estado do jogo
 		self.jogoRunning = True		
 		#loop principal final

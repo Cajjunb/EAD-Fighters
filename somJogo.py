@@ -10,12 +10,18 @@ class somJogo(object):
 		self.paperWrite2 = pygame.mixer.Sound('sounds\paperWriting2.ogg')
 		self.paperWrite3 = pygame.mixer.Sound('sounds\paperWriting3.ogg')
 		self.buzz = pygame.mixer.Sound('sounds\Buzz.ogg')
+		self.contagem = pygame.mixer.Sound('sounds\\321.ogg')
 	def tocarBeep(self):
 		self.beep.play()
 		pass
 
 	def tocarAccept(self):
 		self.accept.play()
+		pass
+
+
+	def contagem(self):
+		self.contagem.play()
 		pass
 
 	def tocarPaperWriting(self):
