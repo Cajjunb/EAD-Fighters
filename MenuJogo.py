@@ -127,7 +127,7 @@ class MenuJogo(object):
 				elif selecionarPersonagem == True:
 					self.som.tocarAccept()
 					pass
-				charX = abs(charX % 2)
+				charX = abs(charX % 3)
 				charY = abs(charY % 1)
 
 				messagebox = pygame.image.load( 'messageBox\\'+ str(charX + (3*charY)) + '.png')

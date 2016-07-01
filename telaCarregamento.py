@@ -9,9 +9,9 @@ class telaCarregamento(object):
 
 	def setupTelaCarregamento(self,telaNumero):
 		if telaNumero == 1:
-			self.telaImagem = pygame.image.load('loadingScreens\\telaRosaAmaralina.png')
+			self.telaImagem = pygame.image.load('loadingScreens\\randomAzul1.png')
 		elif telaNumero == 2:
-			self.telaImagem = pygame.image.load('loadingScreens\\telaRosaLucioTeles.png')
+			self.telaImagem = pygame.image.load('loadingScreens\\randomAzul2.png')
 		pass
 
 	def mostraTelaCarregamento(self,janelaPrincipal):
@@ -36,3 +36,12 @@ class telaCarregamento(object):
 		pygame.display.update()
 		pygame.time.wait(5000)
 		pass
+
+
+	def finalAmaralina(self,janelaPrincipal):
+		intro = pygame.image.load('final\\finalAmaralina.png')
+		janelaPrincipal.blit(intro,(0,0),(0,0,500,500))
+		pygame.display.update()
+		pygame.time.wait(5000)
+		pass
+

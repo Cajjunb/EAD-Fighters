@@ -67,9 +67,11 @@ class Artigotona(object):
 		#Carrega imagens anunciando o vencedor
 		if self.vencedor == 'jogador1':
 			mensagem = pygame.image.load('.\wallpaper\Vencedor1.png')
+			vencedor = 1
 			pass
 		elif self.vencedor == 'jogador2':
 			mensagem = pygame.image.load('.\wallpaper\Vencedor2.png')
+			vencedor = 2
 			pass
 		else:
 			#caso seja
@@ -78,4 +80,5 @@ class Artigotona(object):
 		janelaPrincipal.blit(mensagem,(0,0),(0,0,500,500))
 		pygame.display.update()
 		pygame.time.wait(5000)
+		return vencedor
 		pass

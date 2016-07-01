@@ -15,6 +15,9 @@ class Jogador(object):
 		elif personagem == 1:
 			self.bibliotecaSprites = pygame.image.load('sprites\mariaRosaGrande.png')
 			pass
+		elif personagem == 2:
+			self.bibliotecaSprites = pygame.image.load('sprites\\raquelGrande.png')
+			pass
 		else:
 			self.bibliotecaSprites = pygame.image.load('sprites\LockeAltGrande.png')
 			pass
