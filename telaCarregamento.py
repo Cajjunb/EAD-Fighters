@@ -14,6 +14,13 @@ class telaCarregamento(object):
 			self.telaImagem = pygame.image.load('loadingScreens\\randomAzul2.png')
 		pass
 
+	def setupTelaCarregamentoRandom(self):
+		num = random.randint(1,12)
+		string = str(num)
+		self.telaImagem = pygame.image.load('loadingScreens\\randomAzul'+string+'.png')
+
+
+
 	def mostraTelaCarregamento(self,janelaPrincipal):
 		janelaPrincipal.blit(self.telaImagem,(0,0),(0,0,500,500))
 		pygame.display.update()

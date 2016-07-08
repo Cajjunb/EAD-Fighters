@@ -34,7 +34,7 @@ while jogoRunning :
 
 	#tela Carregamento
 	telaObjeto = telaCarregamento()
-	telaObjeto.setupTelaCarregamento(1)
+	telaObjeto.setupTelaCarregamentoRandom()
 	telaObjeto.mostraTelaCarregamento(janelaPrincipal)
 
 
@@ -47,8 +47,7 @@ while jogoRunning :
 	artigotonaObjeto.jogaArtigotona(janelaPrincipal)
 	vencedor1 = artigotonaObjeto.anunciaVencedor(janelaPrincipal)
 
-
-	telaObjeto.setupTelaCarregamento(2)
+	telaObjeto.setupTelaCarregamentoRandom()
 	telaObjeto.mostraTelaCarregamento(janelaPrincipal)
 
 
